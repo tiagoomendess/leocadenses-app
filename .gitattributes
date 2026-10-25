@@ -1,0 +1,9 @@
+# Normalise line endings in the repository; shell scripts and server configs always use LF so
+# they run on the Linux server even when checked out on Windows.
+* text=auto
+*.sh text eol=lf
+*.conf text eol=lf
+*.png binary
+*.jpg binary
+*.ico binary
+*.ttf binary

@@ -1,0 +1,8 @@
+{
+	"mcpServers": {
+		"flowbite-svelte": {
+			"command": "node",
+			"args": ["C:/Users/Tiago/Desktop/repos/flowbite-svelte-mcp/build/server.js"]
+		}
+	}
+}

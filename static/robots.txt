@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /c/*
+
+Sitemap: https://leocadenses.pt/sitemap.xml
