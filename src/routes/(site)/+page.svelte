@@ -2,6 +2,7 @@
 	import { Button } from 'flowbite-svelte';
 	import { ArrowRightOutline, UserAddSolid } from 'flowbite-svelte-icons';
 	import { resolve } from '$app/paths';
+	import BookingCard from '#lib/components/BookingCard.svelte';
 	import NextGameCard from '#lib/components/NextGameCard.svelte';
 	import PartnersStrip from '#lib/components/PartnersStrip.svelte';
 	import PostCard from '#lib/components/PostCard.svelte';
@@ -59,6 +60,10 @@
 		</span>
 		<ArrowRightOutline class="size-5 transition group-hover:translate-x-1 rtl:rotate-180" />
 	</a>
+
+	{#if data.booking}
+		<BookingCard booking={data.booking} />
+	{/if}
 
 	{#if data.body}
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -- sanitised on the server (renderHtml) -->

@@ -88,5 +88,7 @@
 	"error_not_found_text": "La página que buscas no existe o fue eliminada.",
 	"error_title": "Se produjo un error",
 	"error_text": "Inténtalo de nuevo dentro de unos instantes.",
-	"error_forbidden_title": "Sin acceso"
+	"error_forbidden_title": "Sin acceso",
+	"home_booking_eyebrow": "Alquiler de campo",
+	"home_booking_call": "Llama para reservar"
 }

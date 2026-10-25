@@ -2,13 +2,18 @@ import { inArray } from 'drizzle-orm';
 import { db } from '#lib/server/db/index.ts';
 import { settings } from '#lib/server/db/schema.ts';
 
-/** Voyager settings the public site reads (Definições in the backoffice). */
+/** Voyager settings the app reads (Definições in the backoffice). */
 export const SITE_SETTINGS = [
 	'site.title',
 	'site.description',
 	'site.logo',
 	'site.header_image',
-	'site.google_analytics_tracking_id'
+	'site.google_analytics_tracking_id',
+	'site.booking_title',
+	'site.booking_text',
+	'site.booking_phone',
+	'site.booking_image',
+	'admin.bg_image'
 ] as const;
 
 export type SiteSettingKey = (typeof SITE_SETTINGS)[number];

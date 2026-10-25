@@ -56,6 +56,7 @@ Laravel's `migrations` table stays as a record and is excluded from drizzle.
 | `0000_baseline`            | The Laravel schema (fresh databases only)                         |
 | `0001_database_collation`  | Database default collation `utf8mb4_unicode_ci`, like every table |
 | `0002_quotas_due_date_fix` | Drops the accidental `ON UPDATE CURRENT_TIMESTAMP` on `due_date`  |
+| `0003_home_booking_card`   | Booking settings; removes the old booking block from `home`       |
 
 Workflow:
 
@@ -144,6 +145,9 @@ Uploads live in the R2 bucket `leocadenses`, public at `https://cdn.leocadenses.
   plus the few Materialize classes they use).
 - The next game comes from Domingo às Dez's legacy API (`next-game.ts`, cached 5 minutes);
   emblems load from its CDN.
+- The home page's pitch-hire card (`BookingCard`) reads `site.booking_title`, `_text`,
+  `_phone` and `_image` from Definições; its button is a `tel:` link (`src/lib/phone.ts`) and
+  an empty phone hides it. The old version of the card was HTML inside the `home` body.
 - `/novo-socio` validates like the old controller, checks Cloudflare Turnstile and the email
   domain's DNS, and rate-limits per IP (5 per hour).
 
@@ -181,7 +185,8 @@ Deliberate changes, all keeping the data model:
 - QR codes are drawn locally instead of fetched from api.qrserver.com.
 - "Converter em sócio" turns an application into a member (the old flow was copy by hand).
 - Not ported: Voyager's developer tools (BREAD builder, database, Compass, hooks) and its
-  `admin.*` look-and-feel settings. Their tables stay in the database. Applications can only
+  `admin.*` look-and-feel settings, except `admin.bg_image`, the photo at the top of the side
+  menu. Their tables stay in the database. Applications can only
   be created from the public form.
 - Legacy bodies edited in TipTap are normalised when saved; complex layouts (the home page's
   flex box) are best edited in the editor's HTML source mode.

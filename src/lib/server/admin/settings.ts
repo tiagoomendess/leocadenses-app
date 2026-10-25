@@ -6,14 +6,29 @@ import { IMAGE_LIMITS } from '#lib/server/storage/images.ts';
 import { deleteFile, mediaUrl, STORAGE_FOLDERS } from '#lib/server/storage/index.ts';
 import { storeUpload } from './uploads';
 
-/** What each setting is for, shown under its field. Voyager's `admin.*` ones styled Voyager. */
+/** What each setting is for, shown under its field. Voyager's other `admin.*` ones styled Voyager. */
 const HINTS: Record<string, string> = {
 	'site.title': 'Nome do site, no título das páginas.',
 	'site.description': 'Descrição curta do site.',
 	'site.logo': 'Emblema mostrado na página inicial e no clube.',
 	'site.header_image': 'Fotografia grande do topo da página inicial.',
-	'site.google_analytics_tracking_id': 'Não usado pelo novo site.'
+	'site.google_analytics_tracking_id': 'Não usado pelo novo site.',
+	'site.booking_title': 'Título do cartão de reserva do campo, na página inicial.',
+	'site.booking_text': 'Frase curta por baixo do título.',
+	'site.booking_phone': 'Número para onde se liga ao tocar no botão. Vazio esconde o cartão.',
+	'site.booking_image': 'Fotografia do campo, por trás do texto do cartão.',
+	'admin.bg_image': 'Fotografia por trás do nome, no topo do menu lateral do backoffice.'
 };
+
+/** Photos shown large; the other images (logos, icons) get the smaller size cap. */
+const LARGE_IMAGES = new Set(['site.header_image', 'site.booking_image', 'admin.bg_image']);
+
+/**
+ * Only files uploaded here are deleted when replaced: a setting can also point at a file another
+ * record uses (the booking image started as a page image).
+ */
+const ownsFile = (key: string | null): key is string =>
+	!!key && key.startsWith(`${STORAGE_FOLDERS.settings}/`);
 
 export type SettingField = {
 	id: number;
@@ -69,10 +84,9 @@ export async function saveSettings(formData: FormData): Promise<Record<string, s
 					folder: STORAGE_FOLDERS.settings,
 					resize: {
 						fit: 'inside',
-						maxSize:
-							row.key === 'site.header_image'
-								? IMAGE_LIMITS.contentMaxSize
-								: IMAGE_LIMITS.logoMaxSize
+						maxSize: LARGE_IMAGES.has(row.key)
+							? IMAGE_LIMITS.contentMaxSize
+							: IMAGE_LIMITS.logoMaxSize
 					}
 				});
 				if (stored && 'error' in stored) {
@@ -81,11 +95,11 @@ export async function saveSettings(formData: FormData): Promise<Record<string, s
 				}
 				if (stored) {
 					await db.update(settings).set({ value: stored.key }).where(eq(settings.id, row.id));
-					await deleteFile(row.value);
+					if (ownsFile(row.value)) await deleteFile(row.value);
 				}
 			} else if (formData.get(`remove-${row.id}`) === 'on' && row.value) {
 				await db.update(settings).set({ value: null }).where(eq(settings.id, row.id));
-				await deleteFile(row.value);
+				if (ownsFile(row.value)) await deleteFile(row.value);
 			}
 			continue;
 		}

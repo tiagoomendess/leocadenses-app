@@ -159,5 +159,7 @@
 	"user_menu_back_to_site": "Ver o site",
 	"user_menu_logout": "Terminar sessão",
 	"user_menu_open": "Menu do utilizador",
-	"form_read_only": "Só tem permissão para ver este registo."
+	"form_read_only": "Só tem permissão para ver este registo.",
+	"home_booking_eyebrow": "Aluguer de campo",
+	"home_booking_call": "Ligar para reservar"
 }

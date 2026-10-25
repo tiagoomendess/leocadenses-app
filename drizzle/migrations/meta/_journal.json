@@ -22,6 +22,13 @@
       "when": 1792952845618,
       "tag": "0002_quotas_due_date_fix",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1792965359253,
+      "tag": "0003_home_booking_card",
+      "breakpoints": true
     }
   ]
 }

@@ -88,5 +88,7 @@
 	"error_not_found_text": "The page you are looking for does not exist or was removed.",
 	"error_title": "Something went wrong",
 	"error_text": "Please try again in a moment.",
-	"error_forbidden_title": "No access"
+	"error_forbidden_title": "No access",
+	"home_booking_eyebrow": "Pitch hire",
+	"home_booking_call": "Call to book"
 }

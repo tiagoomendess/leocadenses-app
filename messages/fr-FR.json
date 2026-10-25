@@ -88,5 +88,7 @@
 	"error_not_found_text": "La page que vous cherchez n'existe pas ou a été supprimée.",
 	"error_title": "Une erreur s'est produite",
 	"error_text": "Veuillez réessayer dans quelques instants.",
-	"error_forbidden_title": "Accès refusé"
+	"error_forbidden_title": "Accès refusé",
+	"home_booking_eyebrow": "Location de terrain",
+	"home_booking_call": "Appelez pour réserver"
 }

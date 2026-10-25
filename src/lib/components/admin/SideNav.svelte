@@ -10,11 +10,14 @@
 
 	let {
 		user,
+		image,
 		pathname,
 		open,
 		onClose
 	}: {
 		user: { name: string; email: string; avatar: string; permissions: string[] };
+		/** The photo behind the user's name. */
+		image: string;
 		pathname: string;
 		open: boolean;
 		onClose: () => void;
@@ -61,7 +64,7 @@
 >
 	<!-- Like the old site's side menu: the club picture with the user's avatar, name and email. -->
 	<div class="relative shrink-0 overflow-hidden bg-primary-800 px-4 pt-6 pb-4 text-white">
-		<img src="/images/header.jpg" alt="" class="absolute inset-0 size-full object-cover" />
+		<img src={image} alt="" class="absolute inset-0 size-full object-cover" />
 		<div class="absolute inset-0 bg-linear-to-t from-primary-950/90 to-primary-950/20"></div>
 		<div class="relative">
 			<img

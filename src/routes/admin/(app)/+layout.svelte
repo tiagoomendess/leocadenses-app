@@ -23,6 +23,7 @@
 
 <SideNav
 	user={data.user}
+	image={data.menuImage}
 	pathname={page.url.pathname}
 	open={menuOpen}
 	onClose={() => (menuOpen = false)}
