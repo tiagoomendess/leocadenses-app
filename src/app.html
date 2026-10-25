@@ -5,9 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 		<meta name="text-scale" content="scale" />
 		<meta name="color-scheme" content="light dark" />
-		<!-- Keep in sync with THEME_COLORS in src/lib/theme.ts -->
-		<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f9fafb" />
-		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#030712" />
+		<!-- Filled by hooks.server.ts from the theme cookie (chromeColor in src/lib/theme.ts) -->
+		<meta name="theme-color" media="(prefers-color-scheme: light)" content="%theme.color.light%" />
+		<meta name="theme-color" media="(prefers-color-scheme: dark)" content="%theme.color.dark%" />
 		<link rel="icon" href="/favicon.ico" sizes="any" />
 		<link rel="apple-touch-icon" href="/images/logo.png" />
 		<script nonce="%sveltekit.nonce%">

@@ -43,7 +43,9 @@
 }
 
 @layer base {
+	/* The root carries the page colour too: Safari 26 tints its bars from it, not theme-color. */
 	html {
+		@apply bg-gray-50 dark:bg-gray-950;
 		-webkit-tap-highlight-color: transparent;
 		scroll-padding-top: 5rem;
 	}

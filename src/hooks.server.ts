@@ -13,6 +13,7 @@ import {
 } from '#lib/server/auth/session.ts';
 import { loadSessionUser } from '#lib/server/auth/users.ts';
 import { optOutOfRocketLoader } from '#lib/server/cloudflare.ts';
+import { chromeColor, themePreference } from '#lib/theme.ts';
 
 defineCustomServerStrategy(ADMIN_LOCALE_STRATEGY, {
 	getLocale: (request) => (request ? adminLocale(new URL(request.url).pathname) : undefined)
@@ -23,8 +24,9 @@ function isPrivatePath(pathname: string): boolean {
 	return isAdminPath(pathname) || pathname.startsWith('/c/');
 }
 
-const handleLocale: Handle = ({ event, resolve }) =>
-	paraglideMiddleware(event.request, ({ request, locale }) =>
+const handleLocale: Handle = ({ event, resolve }) => {
+	const theme = themePreference(event.cookies.get('theme'));
+	return paraglideMiddleware(event.request, ({ request, locale }) =>
 		resolve(
 			{ ...event, request },
 			{
@@ -33,11 +35,14 @@ const handleLocale: Handle = ({ event, resolve }) =>
 						html
 							.replace('%paraglide.lang%', locale)
 							.replace('%paraglide.dir%', getTextDirection(locale))
-							.replace('%theme.class%', event.cookies.get('theme') === 'dark' ? 'dark' : '')
+							.replace('%theme.class%', theme === 'dark' ? 'dark' : '')
+							.replace('%theme.color.light%', chromeColor('light', theme))
+							.replace('%theme.color.dark%', chromeColor('dark', theme))
 					)
 			}
 		)
 	);
+};
 
 const handleAuth: Handle = async ({ event, resolve }) => {
 	event.locals.user = null;

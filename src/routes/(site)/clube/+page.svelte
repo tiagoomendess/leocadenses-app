@@ -17,7 +17,7 @@
 	/** The old footer's links. */
 	const social = [
 		{ name: 'Facebook', href: 'https://www.facebook.com/leocadenses', icon: FacebookSolid },
-		{ name: 'Instagram', href: 'https://www.instagram.com/leocadenses/', icon: InstagramSolid },
+		{ name: 'Instagram', href: 'https://www.instagram.com/gdrleocadenses/', icon: InstagramSolid },
 		{ name: 'X (Twitter)', href: 'https://twitter.com/gdrleocadenses', icon: XSolid }
 	];
 
