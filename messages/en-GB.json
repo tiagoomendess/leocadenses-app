@@ -90,5 +90,6 @@
 	"error_text": "Please try again in a moment.",
 	"error_forbidden_title": "No access",
 	"home_booking_eyebrow": "Pitch hire",
-	"home_booking_call": "Call to book"
+	"home_booking_call": "Call to book",
+	"home_booking_directions": "Get directions"
 }

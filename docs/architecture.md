@@ -147,7 +147,7 @@ Uploads live in the R2 bucket `leocadenses`, public at `https://cdn.leocadenses.
   emblems load from its CDN.
 - The home page's pitch-hire card (`BookingCard`) reads `site.booking_title`, `_text`,
   `_phone` and `_image` from Definições; its button is a `tel:` link (`src/lib/phone.ts`) and
-  an empty phone hides it. The old version of the card was HTML inside the `home` body.
+  an empty phone hides it. The Google Maps link for directions is fixed in the component. The old version of the card was HTML inside the `home` body.
 - `/novo-socio` validates like the old controller, checks Cloudflare Turnstile and the email
   domain's DNS, and rate-limits per IP (5 per hour).
 

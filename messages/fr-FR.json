@@ -90,5 +90,6 @@
 	"error_text": "Veuillez réessayer dans quelques instants.",
 	"error_forbidden_title": "Accès refusé",
 	"home_booking_eyebrow": "Location de terrain",
-	"home_booking_call": "Appelez pour réserver"
+	"home_booking_call": "Appelez pour réserver",
+	"home_booking_directions": "Itinéraire"
 }

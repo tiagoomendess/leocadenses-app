@@ -161,5 +161,6 @@
 	"user_menu_open": "Menu do utilizador",
 	"form_read_only": "Só tem permissão para ver este registo.",
 	"home_booking_eyebrow": "Aluguer de campo",
-	"home_booking_call": "Ligar para reservar"
+	"home_booking_call": "Ligar para reservar",
+	"home_booking_directions": "Como chegar"
 }
